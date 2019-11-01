@@ -356,7 +356,7 @@ if (func === undefined){
 module.exports.every = every;
 
 /**
-* every: Calls a function on every element of a collection and returns true
+* some: Calls a function on every element of a collection and returns true
 * if at least one element resolves to true when function is called.
 * 
 * *@param {array of object} collection: The collection we'd like to test.
