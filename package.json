@@ -1,0 +1,29 @@
+{
+  "name": "lodown-tehbakey",
+  "version": "1.0.1",
+  "description": "NPM fuctional programing library project",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "istanbul cover _mocha -- test/ -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TehBakey/lodown.git"
+  },
+  "author": "Blake Cooley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TehBakey/lodown/issues"
+  },
+  "homepage": "https://github.com/TehBakey/lodown#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "i": "^0.3.6",
+    "istanbul": "^0.4.5",
+    "mocha": "^6.2.2",
+    "sinon": "^7.5.0"
+  }
+}
