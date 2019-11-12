@@ -46,15 +46,13 @@ module.exports.typeOf = typeOf;
 /**
 * first: Compares the array/number to a squence of seperate if statements to filter out
 *errors, if none pass the if statements loops through the array a (number) of times
-* and returns those values.
+* and pushes those values into a new array. I.e, if you pass 2 as the agrument 
+* the first two values from the oringal array will be returned in a new array.
 * 
 * *@param {array} array: The array we want the first (number) values of.
 * @param {number} number: The number of values starting from index 0 we want returned
 * 
-* @return {array} If the array is not an array or the number is less than zero
-* returns an empty array, if the number is NaN or undefined returns first value
-* in array, if the number is greater than length of the array return entire array,
-* otherwise return the first (number) of the oringal array as a new array
+* @return {array} A new array containing the first (number) of values of the oringal array
 */
 
 function first (array, number) {
@@ -80,15 +78,13 @@ module.exports.first = first;
 /**
 * last: Compares the array/number to a squence of seperate if statements to filter out
 *errors, if none pass the if statements loops backwards through the array a 
-* (number) of times and returns those values.
+* (number) of times and returns those values. I.e, if you pass 2 as the agrument 
+* the last two values from the oringal array will be returned in a new array.
 * 
 * *@param {array} array: The array we want the last (number) values of.
 * @param {number} number: The number of values starting from last index we want returned
 * 
-* @return {array} If the array is not an array returns an empty array, 
-* if the number is NaN or undefined returns last value in array, 
-* if the number is greater than length of the array return entire array,
-* otherwise return the last (number) of the oringal array as a new array
+* @return {array} A new array containing the last (number) of values of the oringal array.
 */
 
  function last(array, number) {
@@ -138,14 +134,15 @@ function indexOf(array, value){
 module.exports.indexOf = indexOf;
 
 /**
-* contains: Checks if the given array contains the value given with .includes
-* method and returns a boolean
+* contains: Loops through an array checking if the exact (value) is contained within,
+* returning true if at least one instance of (value) exists within the array. False
+* if the entire array doesn't contain an instance of (value).
 * 
 * *@param {array} array: The array we want to check the contents of.
 * @param {any datatype} value: The value inside the array we're checking for.
 * 
-* @return {boolean} Ternary operator cheack array for value with .includes method
-* returns true if array contains values, false otherwise.
+* @return {boolean} True if at least one index in the array contains (value),
+* flase otherwise.
 */
 
 function contains(array, value){
@@ -178,11 +175,9 @@ function each(collection, action) {
 module.exports.each = each;
 
 /**
-* unique: Creates a new empty array called result, then loops through oringal 
-* array using indexOf function on each value of the oringal array against the 
-* result. If result does not have indexOf the value of oringal array at that 
-* iteration, pushes that value into result. This filters out all duplicate
-* values in oringal array.
+* unique: Loops through each index of the array and checks if that value is found
+* at any other index of the array pushing the first instance of that value into 
+* a new array without duplicates.
 * 
 * *@param {array} array: The array we want to pull unique values from.
 * 
@@ -255,7 +250,7 @@ module.exports.reject = reject;
 * * @param {function} testFunc: The function we want to run on each index of the array,
 * takes value, index, and array as agruments and returns a boolean value.
 * 
-* @return {array containing arrays} An array containing two sub arrays, the first
+* @return {array} An array containing two sub arrays, the first
 * being the values the resolved to true, the second values that resolves to false.
 */
 function partition(array, testFunc){
@@ -303,8 +298,8 @@ function map(collection, func){
 module.exports.map = map;
 
 /**
-* pluck: Uses map to call a function on each index/key that returns the specified
-* property from the collection.
+* pluck: Loops through a collection and pushes each value paired with the key(prop)
+* passed as an argument into an array.
 * 
 * *@param {array of object} collection: The collection we want to pull properties from
 * * @param {any} prop: The property we want returned from collection 
@@ -318,11 +313,12 @@ function pluck(collection, prop){
     });
 }
 
-module.exports.map = map;
+module.exports.pluck = pluck;
 
 /**
 * every: Calls a function on every element of a collection and returns true
-* if every element resolves to true when function is called.
+* if every element resolves to true when function is called. If no callback function
+* is provided, returns true if each value in the collection is truthy, false otherwise.
 * 
 * *@param {array of object} collection: The collection we'd like to test.
 * * @param {function} func: The function we're testing the truthy/falsyness of
@@ -396,7 +392,7 @@ module.exports.some = some;
 * 
 * *@param {array} collection: The collection we're reducing to a single value.
 * * @param {function} func: The reducer function to invoke on each element.
-* @param {number] seed: The starting value for our function.
+* @param {number} seed: The starting value for our function.
 * 
 * @return {number} The final result which is the total of each invoking of the 
 * reducer function.
