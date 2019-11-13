@@ -44,15 +44,17 @@ function typeOf(value){
 module.exports.typeOf = typeOf;
 
 /**
-* first: Compares the array/number to a squence of seperate if statements to filter out
-*errors, if none pass the if statements loops through the array a (number) of times
-* and pushes those values into a new array. I.e, if you pass 2 as the agrument 
-* the first two values from the oringal array will be returned in a new array.
+* first: Creates a new array containing the nth number of values starting from
+* the first index forward.
 * 
 * *@param {array} array: The array we want the first (number) values of.
 * @param {number} number: The number of values starting from index 0 we want returned
 * 
-* @return {array} A new array containing the first (number) of values of the oringal array
+* @return {array} If the first agrument is not an array or the number is less
+* than zero, returns an empty array.
+* If the number is undefined or NaN, returns the value at index 0 in new array.
+* Otherwise retuns a new array containing the first nth values from oringal
+* array in a new array.
 */
 
 function first (array, number) {
@@ -76,16 +78,18 @@ function first (array, number) {
 module.exports.first = first;
 
 /**
-* last: Compares the array/number to a squence of seperate if statements to filter out
-*errors, if none pass the if statements loops backwards through the array a 
-* (number) of times and returns those values. I.e, if you pass 2 as the agrument 
-* the last two values from the oringal array will be returned in a new array.
+* last: Creates a new array containing the last nth number of values starting from
+* the last index back.
 * 
 * *@param {array} array: The array we want the last (number) values of.
 * @param {number} number: The number of values starting from last index we want returned
 * 
-* @return {array} A new array containing the last (number) of values of the oringal array.
-*/
+* @return {array} If the first agrument is not an array or the number is less
+* than zero, returns an empty array.
+* If the number is undefined or NaN, returns the value at last index in new array.
+* Otherwise retuns a new array containing the last nth values from oringal
+*  array in a new array.
+**/
 
  function last(array, number) {
      let result = []
@@ -353,7 +357,9 @@ module.exports.every = every;
 
 /**
 * some: Calls a function on every element of a collection and returns true
-* if at least one element resolves to true when function is called.
+* if at least one element resolves to true when function is called. If no callback function
+* is provided, returns true if at least one value in the collection is truthy, false otherwise.
+* 
 * 
 * *@param {array of object} collection: The collection we'd like to test.
 * * @param {function} func: The function we're testing the truthy/falsyness of
